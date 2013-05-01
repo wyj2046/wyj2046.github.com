@@ -4,7 +4,7 @@
   <title><![CDATA[时之殇]]></title>
   <link href="http://wyj2046.github.io/atom.xml" rel="self"/>
   <link href="http://wyj2046.github.io/"/>
-  <updated>2013-05-01T22:02:22+08:00</updated>
+  <updated>2013-05-01T22:06:50+08:00</updated>
   <id>http://wyj2046.github.io/</id>
   <author>
     <name><![CDATA[豆豆蛙]]></name>
@@ -22,7 +22,7 @@
 <h2 id="sec-1">缘起</h2>
 <div class="outline-text-2" id="text-1">
 
-<p>  早都有搭个个人blog的想法了,作为一名IT行业从业者:),怎么能没有自己的博客呢.当然,将博客托管在神马CSDN,cnblog上也不符合我们的折腾精神,本着生命不惜,折腾不止的信念,终于利用这个51假期,在参考了众多资料,搭建了一个完全免费,不限流量的基于octopress的个人博客(本着能省则省的态度,连域名都用免费的).同时,作为一名Emacs党,orgmode也是标配,用orgmode直接发布文章也是刚需了,这篇文章就是用orgmode写的
+<p>  早都有搭一个个人blog的想法了, 作为一名IT行业从业者:) 怎么能没有自己的独立博客呢. 当然, 将博客托管在csdn,cnblog上也不符合我们的折腾精神. 本着生命不惜,折腾不止的信念, 终于利用这个51假期, 在参考了众多资料后, 搭建了一个完全免费,不限流量的基于octopress的个人博客(本着能省则省的态度,连域名都用免费的). 同时,作为一名Emacs党,orgmode也是标配,用orgmode直接发布文章也是刚需了,这篇文章就是用orgmode写的
 </p></div>
 
 </div>
