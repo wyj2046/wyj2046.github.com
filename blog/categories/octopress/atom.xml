@@ -4,7 +4,7 @@
   <title><![CDATA[Category: octopress | 时之殇]]></title>
   <link href="http://wyj2046.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://wyj2046.github.io/"/>
-  <updated>2013-05-01T22:36:09+08:00</updated>
+  <updated>2013-05-01T23:17:26+08:00</updated>
   <id>http://wyj2046.github.io/</id>
   <author>
     <name><![CDATA[豆豆蛙]]></name>
@@ -50,7 +50,7 @@
 </p>
 
 
-<pre class="src src-shell">sudo apt-get install ruby1.9.3
+<pre class="example">sudo apt-get install ruby1.9.3
 </pre>
 
 </div>
