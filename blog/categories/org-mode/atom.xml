@@ -4,7 +4,7 @@
   <title><![CDATA[Category: org-mode | 时之殇]]></title>
   <link href="http://wyj2046.github.io/blog/categories/org-mode/atom.xml" rel="self"/>
   <link href="http://wyj2046.github.io/"/>
-  <updated>2013-05-01T21:00:32+08:00</updated>
+  <updated>2013-05-01T22:02:22+08:00</updated>
   <id>http://wyj2046.github.io/</id>
   <author>
     <name><![CDATA[豆豆蛙]]></name>
@@ -18,7 +18,140 @@
     <link href="http://wyj2046.github.io/blog/2013/05/01/first-step-in-octopress/"/>
     <updated>2013-05-01T20:58:00+08:00</updated>
     <id>http://wyj2046.github.io/blog/2013/05/01/first-step-in-octopress</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">缘起</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>  早都有搭个个人blog的想法了,作为一名IT行业从业者:),怎么能没有自己的博客呢.当然,将博客托管在神马CSDN,cnblog上也不符合我们的折腾精神,本着生命不惜,折腾不止的信念,终于利用这个51假期,在参考了众多资料,搭建了一个完全免费,不限流量的基于octopress的个人博客(本着能省则省的态度,连域名都用免费的).同时,作为一名Emacs党,orgmode也是标配,用orgmode直接发布文章也是刚需了,这篇文章就是用orgmode写的
+</p></div>
+
+</div>
+
+
+
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">我的搭建环境</h2>
+<div class="outline-text-2" id="text-2">
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">安装ruby</h2>
+<div class="outline-text-2" id="text-3">
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">安装octopress</h2>
+<div class="outline-text-2" id="text-4">
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">Github账户配置</h2>
+<div class="outline-text-2" id="text-5">
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">把octopress部署到Github上</h2>
+<div class="outline-text-2" id="text-6">
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7">基本的blog配置</h2>
+<div class="outline-text-2" id="text-7">
+
+
+</div>
+
+<div id="outline-container-7-1" class="outline-3">
+<h3 id="sec-7-1">开启disqus</h3>
+<div class="outline-text-3" id="text-7-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-3">
+<h3 id="sec-7-2">在侧边栏加新浪微博</h3>
+<div class="outline-text-3" id="text-7-2">
+
+</div>
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8">将修改好的octopress配置提交到Github上去</h2>
+<div class="outline-text-2" id="text-8">
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9">写文章</h2>
+<div class="outline-text-2" id="text-9">
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-10" class="outline-2">
+<h2 id="sec-10">增加org-mode导出功能</h2>
+<div class="outline-text-2" id="text-10">
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-11" class="outline-2">
+<h2 id="sec-11">参考资料</h2>
+<div class="outline-text-2" id="text-11">
+
+</div>
+</div>
+
 ]]></content>
   </entry>
   

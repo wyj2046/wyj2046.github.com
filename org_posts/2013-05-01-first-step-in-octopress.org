@@ -4,6 +4,20 @@ layout: post
 title: "30分钟搭建一个octopress博客"
 date: 2013-05-01 20:58
 comments: true
-categories: octropress org-mode
+categories: octopress org-mode
 ---
 #+END_HTML
+* 缘起
+  早都有搭个个人blog的想法了,作为一名IT行业从业者:),怎么能没有自己的博客呢.当然,将博客托管在神马CSDN,cnblog上也不符合我们的折腾精神,本着生命不惜,折腾不止的信念,终于利用这个51假期,在参考了众多资料,搭建了一个完全免费,不限流量的基于octopress的个人博客(本着能省则省的态度,连域名都用免费的).同时,作为一名Emacs党,orgmode也是标配,用orgmode直接发布文章也是刚需了,这篇文章就是用orgmode写的
+* 我的搭建环境
+* 安装ruby
+* 安装octopress
+* Github账户配置
+* 把octopress部署到Github上
+* 基本的blog配置
+** 开启disqus
+** 在侧边栏加新浪微博
+* 将修改好的octopress配置提交到Github上去
+* 写文章
+* 增加org-mode导出功能
+* 参考资料
