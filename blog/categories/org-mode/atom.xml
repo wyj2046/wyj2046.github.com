@@ -4,7 +4,7 @@
   <title><![CDATA[Category: org-mode | 时之殇]]></title>
   <link href="http://wyj2046.github.io/blog/categories/org-mode/atom.xml" rel="self"/>
   <link href="http://wyj2046.github.io/"/>
-  <updated>2013-05-01T23:17:26+08:00</updated>
+  <updated>2013-05-02T00:12:35+08:00</updated>
   <id>http://wyj2046.github.io/</id>
   <author>
     <name><![CDATA[豆豆蛙]]></name>
@@ -63,6 +63,15 @@
 <div id="outline-container-4" class="outline-2">
 <h2 id="sec-4">安装octopress</h2>
 <div class="outline-text-2" id="text-4">
+
+
+
+
+<pre class="example">git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+sudo gem install bundler
+rake install
+</pre>
 
 </div>
 

@@ -17,6 +17,12 @@ categories: octopress org-mode
   sudo apt-get install ruby1.9.3
   #+end_example
 * 安装octopress
+  #+begin_example
+  git clone git://github.com/imathis/octopress.git octopress
+  cd octopress
+  sudo gem install bundler
+  rake install
+  #+end_example
 * Github账户配置
 * 把octopress部署到Github上
 * 基本的blog配置
