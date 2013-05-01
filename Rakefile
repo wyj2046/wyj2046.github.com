@@ -27,6 +27,8 @@ new_post_ext    = "markdown"  # default new post file extension when using the n
 new_page_ext    = "markdown"  # default new page file extension when using the new_page task
 server_port     = "4000"      # port for preview server eg. localhost:4000
 
+org_posts_dir = "org_posts"
+new_org_post_ext = "org"  # default new org post file extension when using the new_org_post task
 
 desc "Initial setup for Octopress: copies the default theme into the path of Jekyll's generator. Rake install defaults to rake install[classic] to install a different theme run rake install[some_theme_name]"
 task :install, :theme do |t, args|
@@ -88,6 +90,36 @@ task :preview do
 
   [jekyllPid, compassPid, rackupPid].each { |pid| Process.wait(pid) }
 end
+
+
+# usage rake new_org_post[my-new-org-post] or rake new_org_post['my new org post'] or rake new_org_post (defaults to "new-post")
+desc "Begin a new org_post in #{source_dir}/#{org_posts_dir}"
+task :new_org_post, :title do |t, args|
+  if args.title
+    title = args.title
+  else
+    title = get_stdin("Enter a title for your post: ")
+  end
+  raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
+  mkdir_p "#{source_dir}/#{org_posts_dir}"
+  filename = "#{source_dir}/#{org_posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}.#{new_org_post_ext}"
+  if File.exist?(filename)
+    abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+  end
+  puts "Creating new post: #{filename}"
+  open(filename, 'w') do |post|
+    post.puts "#+BEGIN_HTML"
+    post.puts "---"
+    post.puts "layout: post"
+    post.puts "title: \"#{title.gsub(/&/,'&amp;')}\""
+    post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M')}"
+    post.puts "comments: true"
+    post.puts "categories: "
+    post.puts "---"
+    post.puts "#+END_HTML"
+  end
+end
+
 
 # usage rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")
 desc "Begin a new post in #{source_dir}/#{posts_dir}"

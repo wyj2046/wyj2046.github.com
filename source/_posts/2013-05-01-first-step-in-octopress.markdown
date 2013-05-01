@@ -1,0 +1,7 @@
+---
+layout: post
+title: "30分钟搭建一个octopress博客"
+date: 2013-05-01 20:58
+comments: true
+categories: octropress org-mode
+---
