@@ -9,7 +9,7 @@
   <meta name="author" content="豆豆蛙">
 
   
-  <meta name="description" content="前言 Emacs Lisp是一种神秘莫测的黑客编程语言. 它的弱点是众所周知的, 它很慢, 它是单线程的, 同时它的变量是动态绑定的, 等等等等. 我当然还能继续说下去, 但这些不是主要目的. 尽管有这些看得见的弱点, 但Emacs Lisp仍然是github上最流行的lisp方言, &hellip;">
+  <meta name="description" content="原文链接 http://joelmccracken.github.io/entries/why-you-should-learn-elisp/ 前言 Emacs Lisp是一种神秘莫测的黑客编程语言. 它的弱点是众所周知的, 它很慢, 它是单线程的, 同时它的变量是动态绑定的, 等等等等. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,7 +71,7 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/05/03/5-reasons-why-you-should-learn-emacs-lisp-today/">今天你应当学习Emacs Lisp的5点理由</a></h1>
+      <h1 class="entry-title"><a href="/blog/2013/05/03/5-reasons-why-you-should-learn-emacs-lisp-today/">今天你应当学习Emacs Lisp的5点理由(译)</a></h1>
     
     
       <p class="meta">
@@ -97,8 +97,20 @@
 
 
   <div class="entry-content"><div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">前言</h2>
+<h2 id="sec-1">原文链接</h2>
 <div class="outline-text-2" id="text-1">
+
+<p>  <a href="http://joelmccracken.github.io/entries/why-you-should-learn-elisp/">http://joelmccracken.github.io/entries/why-you-should-learn-elisp/</a>
+</p></div>
+
+</div>
+
+
+
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">前言</h2>
+<div class="outline-text-2" id="text-2">
 
 <p>  Emacs Lisp是一种神秘莫测的黑客编程语言. 它的弱点是众所周知的, 它很慢, 它是单线程的, 同时它的变量是动态绑定的, 等等等等. 我当然还能继续说下去, 但这些不是主要目的. 尽管有这些看得见的弱点, 但Emacs Lisp仍然是github上最流行的lisp方言, 这一点有许多程序员对此发誓. 至于我, 能平均每天写50到100行之间的Emacs Lisp代码.
 </p>
@@ -117,9 +129,9 @@
 
 
 
-<div id="outline-container-2" class="outline-2">
-<h2 id="sec-2">不管学习多少Emacs Lisp都会立即使你的生活变得更美好</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">不管学习多少Emacs Lisp都会立即使你的生活变得更美好</h2>
+<div class="outline-text-2" id="text-3">
 
 <p>  你学习到的东西能够立即改变你的生活, 不是从现在起一年, 不是毕业以后, 也不是当你的团队开始下一个项目时你才会使用到这门语言, 而是 <b>现在</b>!
 </p>
@@ -141,9 +153,9 @@
 
 
 
-<div id="outline-container-3" class="outline-2">
-<h2 id="sec-3">Emacs Lisp和Emacs是一个真正有趣的编程平台</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4">Emacs Lisp和Emacs是一个真正有趣的编程平台</h2>
+<div class="outline-text-2" id="text-4">
 
 <p>  你并不一定非要是一个狂热的Emacs党. 但我想任何人都会同意Emacs是有趣的.
 </p>
@@ -162,14 +174,14 @@
 
 
 
-<div id="outline-container-4" class="outline-2">
-<h2 id="sec-4">动态绑定确实很棒</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5">动态绑定确实很棒</h2>
+<div class="outline-text-2" id="text-5">
 
-<p>  让我们快速回顾一下动态绑定, 同时对比另一方面, 词汇绑定(lexical binding).
+<p>  让我们快速回顾一下动态绑定, 同时对比另一方面, 词法绑定(lexical binding).
 </p>
 <p>
-  首先, 让我们看看变量绑定, 特别的, 用Javascript伪代码来表示就是如下所示:
+  首先, 让我们看看变量绑定, 特别的, 用Javascript伪代码来表示, 如下:
 </p>
 
 
@@ -191,7 +203,108 @@ console.log(add2(6));  // = 8
 console.log(add10(13)); // = 23
 </pre>
 
+
+<p>  
+  我们来看看这段代码. createAdder函数用来返回另一个函数, 它是用来&#8221;创建&#8221;和&#8221;增加&#8221;的. createAdder将返回一个参数和一个新函数的和.
+</p>
+<p>
+  重要的一点是, 无论createAdder什么时候返回, 它都仍然返回传给它的参数&ndash;num<sub>to</sub><sub>add</sub>. Whatever variables are within a parent’s scope when a function gets created remain available to it for its execution(不知道怎么翻).
+</p>
+<p>
+  词法作用域非常棒, 它能真正优雅地解决问题, 正式这点使Ajax和Node.js更加合理.
+</p>
+<p>
+  动态作用域是不同的, 在动态作用域中, 变量在求值时绑定和计算. 计算变量在任意调用栈之上.
+</p>
+<p>
+  用伪代码举个例子, 动态绑定的Javascript如下所示:
+</p>
+
+
+
+<pre class="example">function adder(new_num)
+{
+  return num_to_add + new_num;
+}
+
+function add2(new_num)
+{l
+  num_to_add = 2;
+  return adder(new_num)
+}
+
+function add10(new_num)
+{
+  num_to_add = 10;
+  return adder(new_num)
+}
+
+console.log(add2(6));  // = 8
+
+console.log(add10(13));  // = 23
+</pre>
+
+
+<p>
+  关键的不同点是adder函数, 变量num<sub>to</sub><sub>add似乎不涉及任何东西</sub>. 然而当语言是动态绑定的, 变量会在它被调用的地方引用. 因此add2函数设置的变量num<sub>to</sub><sub>add</sub>, 当adder函数被调用时, 它才有可能被引用.
+</p>
+<p>
+  你可能会想这听起来就好像是全局变量, 没错, 的确如此. 这就是为什么当今绝大部分语言都是词法绑定的, 而不是动态绑定的.
+</p>
+<p>
+  实践中, 这这的不容易变糟. 你所想的变量改变是有据可查的. 当需要时代码仅仅使用动态范围解析, 当然这不需要经常进行.
+</p>
+<p>
+  动态绑定事实上相当方便. 举个例子, 它可以使你的变量基于配置改变.
+</p>
+<p>
+  另外还有一种宏, 叫做lexical-let, 能使你得到词法绑定的功能.
+</p>
+<p>
+  如果这还不够, Emacs24现在支持词法作用域. 你只需要用elip文件设置一个变量告诉你想要的词法作用域.
+</p>
+<p>
+  所以, 动态绑定确实很酷.
+</p></div>
+
 </div>
+
+
+
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6">单线程是件好事</h2>
+<div class="outline-text-2" id="text-6">
+
+<p>  Emacs Lisp是单线程的, 很可能永远都会是. 这可能会有点限制, 但却带来了相当大的简化.
+</p>
+<p>
+  老实说, 如果你真的想处理锁和它们的同胞, 你不得不去其他地方看看.
+</p></div>
+
+</div>
+
+
+
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7">当你理解Emacs Lisp后关于Emacs的一切都会更有意义</h2>
+<div class="outline-text-2" id="text-7">
+
+<p>  你可能已经注意到Emacs有相当纯净的文档, 而它的文档又相当广泛. 然而, 绝大部分文档仅仅在有Lisp代码的上下文中才有意义. 因此如果你不懂Emacs Lisp,  那么许多文档都是没用的.
+</p>
+<p>
+  举个例子, 为了明白Emacs键绑定系统, 你需要了解键绑定的组成结构, 而这就意味着Lisp.
+</p>
+<p>
+  老实说, 在Emacs中到处都是Emacs Lisp, 不了解Lisp也能用Emacs, 但当你理解了它的原生语言&ndash;Emacs Lisp后, 将会更好的使用Emacs.
+</p>
+<p>
+  因此你应当学点Emacs Lisp. 它是一个相当迷人的编程环境, 而且很有可能使你的生活变得更容易. 另外, 对我来说, Emacs Lisp的问题是没有足够明显的dissuading. 事实上, 应该考虑加强它们.
+</p>
+<p>
+  总之, 用Emacs Lisp工作使人兴奋, 我强类推荐给那些认为自己是一个严肃的程序员的人们.
+</p></div>
 </div>
 
 </div>
@@ -402,7 +515,7 @@ rake install
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/05/03/5-reasons-why-you-should-learn-emacs-lisp-today/">今天你应当学习Emacs Lisp的5点理由</a>
+        <a href="/blog/2013/05/03/5-reasons-why-you-should-learn-emacs-lisp-today/">今天你应当学习Emacs Lisp的5点理由(译)</a>
       </li>
     
       <li class="post">

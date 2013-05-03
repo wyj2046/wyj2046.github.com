@@ -1,12 +1,14 @@
 #+BEGIN_HTML
 ---
 layout: post
-title: "今天你应当学习Emacs Lisp的5点理由"
+title: "今天你应当学习Emacs Lisp的5点理由(译)"
 date: 2013-05-03 18:12
 comments: true
-categories: 
+categories: emacs lisp 翻译
 ---
 #+END_HTML
+* 原文链接
+  http://joelmccracken.github.io/entries/why-you-should-learn-elisp/
 * 前言
   Emacs Lisp是一种神秘莫测的黑客编程语言. 它的弱点是众所周知的, 它很慢, 它是单线程的, 同时它的变量是动态绑定的, 等等等等. 我当然还能继续说下去, 但这些不是主要目的. 尽管有这些看得见的弱点, 但Emacs Lisp仍然是github上最流行的lisp方言, 这一点有许多程序员对此发誓. 至于我, 能平均每天写50到100行之间的Emacs Lisp代码.
 
@@ -34,9 +36,9 @@ categories:
 
   当用Emacs Lisp编程时, 你会觉得在这个系统上完成工作就像当今社会与石器时代相比. 另外还有红利: 这不仅仅是一些智力上的练习, 同时也是实践性的, 精彩的, 同时还能立即可用.
 * 动态绑定确实很棒
-  让我们快速回顾一下动态绑定, 同时对比另一方面, 词汇绑定(lexical binding).
+  让我们快速回顾一下动态绑定, 同时对比另一方面, 词法绑定(lexical binding).
 
-  首先, 让我们看看变量绑定, 特别的, 用Javascript伪代码来表示就是如下所示:
+  首先, 让我们看看变量绑定, 特别的, 用Javascript伪代码来表示, 如下:
 
   #+begin_example
   function createAdder(num_to_add)
@@ -55,3 +57,64 @@ categories:
   
   console.log(add10(13)); // = 23
   #+end_example
+  
+  我们来看看这段代码. createAdder函数用来返回另一个函数, 它是用来"创建"和"增加"的. createAdder将返回一个参数和一个新函数的和.
+
+  重要的一点是, 无论createAdder什么时候返回, 它都仍然返回传给它的参数--num_to_add. Whatever variables are within a parent’s scope when a function gets created remain available to it for its execution(不知道怎么翻).
+
+  词法作用域非常棒, 它能真正优雅地解决问题, 正式这点使Ajax和Node.js更加合理.
+
+  动态作用域是不同的, 在动态作用域中, 变量在求值时绑定和计算. 计算变量在任意调用栈之上.
+
+  用伪代码举个例子, 动态绑定的Javascript如下所示:
+  
+  #+begin_example
+  function adder(new_num)
+  {
+    return num_to_add + new_num;
+  }
+
+  function add2(new_num)
+  {l
+    num_to_add = 2;
+    return adder(new_num)
+  }
+
+  function add10(new_num)
+  {
+    num_to_add = 10;
+    return adder(new_num)
+  }
+
+  console.log(add2(6));  // = 8
+  
+  console.log(add10(13));  // = 23
+  #+end_example
+
+  关键的不同点是adder函数, 变量num_to_add似乎不涉及任何东西. 然而当语言是动态绑定的, 变量会在它被调用的地方引用. 因此add2函数设置的变量num_to_add, 当adder函数被调用时, 它才有可能被引用.
+
+  你可能会想这听起来就好像是全局变量, 没错, 的确如此. 这就是为什么当今绝大部分语言都是词法绑定的, 而不是动态绑定的.
+
+  实践中, 这这的不容易变糟. 你所想的变量改变是有据可查的. 当需要时代码仅仅使用动态范围解析, 当然这不需要经常进行.
+
+  动态绑定事实上相当方便. 举个例子, 它可以使你的变量基于配置改变.
+
+  另外还有一种宏, 叫做lexical-let, 能使你得到词法绑定的功能.
+
+  如果这还不够, Emacs24现在支持词法作用域. 你只需要用elip文件设置一个变量告诉你想要的词法作用域.
+
+  所以, 动态绑定确实很酷.
+* 单线程是件好事
+  Emacs Lisp是单线程的, 很可能永远都会是. 这可能会有点限制, 但却带来了相当大的简化.
+
+  老实说, 如果你真的想处理锁和它们的同胞, 你不得不去其他地方看看.
+* 当你理解Emacs Lisp后关于Emacs的一切都会更有意义
+  你可能已经注意到Emacs有相当纯净的文档, 而它的文档又相当广泛. 然而, 绝大部分文档仅仅在有Lisp代码的上下文中才有意义. 因此如果你不懂Emacs Lisp,  那么许多文档都是没用的.
+
+  举个例子, 为了明白Emacs键绑定系统, 你需要了解键绑定的组成结构, 而这就意味着Lisp.
+
+  老实说, 在Emacs中到处都是Emacs Lisp, 不了解Lisp也能用Emacs, 但当你理解了它的原生语言--Emacs Lisp后, 将会更好的使用Emacs.
+
+  因此你应当学点Emacs Lisp. 它是一个相当迷人的编程环境, 而且很有可能使你的生活变得更容易. 另外, 对我来说, Emacs Lisp的问题是没有足够明显的dissuading. 事实上, 应该考虑加强它们.
+
+  总之, 用Emacs Lisp工作使人兴奋, 我强类推荐给那些认为自己是一个严肃的程序员的人们.
