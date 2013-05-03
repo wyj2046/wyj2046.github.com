@@ -4,7 +4,7 @@
   <title><![CDATA[时之殇]]></title>
   <link href="http://wyj2046.github.io/atom.xml" rel="self"/>
   <link href="http://wyj2046.github.io/"/>
-  <updated>2013-05-03T20:09:50+08:00</updated>
+  <updated>2013-05-03T20:17:36+08:00</updated>
   <id>http://wyj2046.github.io/</id>
   <author>
     <name><![CDATA[豆豆蛙]]></name>
@@ -87,6 +87,31 @@
 <div id="outline-container-4" class="outline-2">
 <h2 id="sec-4">动态绑定确实很棒</h2>
 <div class="outline-text-2" id="text-4">
+
+<p>  让我们快速回顾一下动态绑定, 同时对比另一方面, 词汇绑定(lexical binding).
+</p>
+<p>
+  首先, 让我们看看变量绑定, 特别的, 用Javascript伪代码来表示就是如下所示:
+</p>
+
+
+
+<pre class="example">function createAdder(num_to_add)
+{
+  function(new_num)
+  {
+    return num_to_add + new_num;
+  }
+}
+
+add2 = createAdder(2);
+
+add10 = createAdder(10);
+
+console.log(add2(6));  // = 8
+
+console.log(add10(13)); // = 23
+</pre>
 
 </div>
 </div>

@@ -34,3 +34,24 @@ categories:
 
   当用Emacs Lisp编程时, 你会觉得在这个系统上完成工作就像当今社会与石器时代相比. 另外还有红利: 这不仅仅是一些智力上的练习, 同时也是实践性的, 精彩的, 同时还能立即可用.
 * 动态绑定确实很棒
+  让我们快速回顾一下动态绑定, 同时对比另一方面, 词汇绑定(lexical binding).
+
+  首先, 让我们看看变量绑定, 特别的, 用Javascript伪代码来表示就是如下所示:
+
+  #+begin_example
+  function createAdder(num_to_add)
+  {
+    function(new_num)
+    {
+      return num_to_add + new_num;
+    }
+  }
+
+  add2 = createAdder(2);
+
+  add10 = createAdder(10);
+
+  console.log(add2(6));  // = 8
+  
+  console.log(add10(13)); // = 23
+  #+end_example
