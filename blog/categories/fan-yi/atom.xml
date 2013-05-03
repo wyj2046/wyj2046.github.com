@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 翻译 | 时之殇]]></title>
   <link href="http://wyj2046.github.io/blog/categories/fan-yi/atom.xml" rel="self"/>
   <link href="http://wyj2046.github.io/"/>
-  <updated>2013-05-03T21:12:14+08:00</updated>
+  <updated>2013-05-03T21:13:50+08:00</updated>
   <id>http://wyj2046.github.io/</id>
   <author>
     <name><![CDATA[豆豆蛙]]></name>
@@ -130,7 +130,7 @@ console.log(add10(13)); // = 23
   我们来看看这段代码. createAdder函数用来返回另一个函数, 它是用来"创建"和"增加"的. createAdder将返回一个参数和一个新函数的和.
 </p>
 <p>
-  重要的一点是, 无论createAdder什么时候返回, 它都仍然返回传给它的参数&ndash;num<sub>to</sub><sub>add</sub>. Whatever variables are within a parent’s scope when a function gets created remain available to it for its execution(不知道怎么翻).
+  重要的一点是, 无论createAdder什么时候返回, 它都仍然返回传给它的参数&ndash;num_to_add. Whatever variables are within a parent’s scope when a function gets created remain available to it for its execution(不知道怎么翻).
 </p>
 <p>
   词法作用域非常棒, 它能真正优雅地解决问题, 正式这点使Ajax和Node.js更加合理.
@@ -168,7 +168,7 @@ console.log(add10(13));  // = 23
 
 
 <p>
-  关键的不同点是adder函数, 变量 num<sub>to</sub><sub>add</sub> 似乎不涉及任何东西. 然而当语言是动态绑定的, 变量会在它被调用的地方引用. 因此add2函数设置的变量num<sub>to</sub><sub>add</sub>, 当adder函数被调用时, 它才有可能被引用.
+  关键的不同点是adder函数, 变量 num<sub>to</sub><sub>add</sub> 似乎不涉及任何东西. 然而当语言是动态绑定的, 变量会在它被调用的地方引用. 因此add2函数设置的变量num_to_add, 当adder函数被调用时, 它才有可能被引用.
 </p>
 <p>
   你可能会想这听起来就好像是全局变量, 没错, 的确如此. 这就是为什么当今绝大部分语言都是词法绑定的, 而不是动态绑定的.

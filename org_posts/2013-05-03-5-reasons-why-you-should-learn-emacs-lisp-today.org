@@ -60,7 +60,7 @@ categories: emacs lisp 翻译
   
   我们来看看这段代码. createAdder函数用来返回另一个函数, 它是用来"创建"和"增加"的. createAdder将返回一个参数和一个新函数的和.
 
-  重要的一点是, 无论createAdder什么时候返回, 它都仍然返回传给它的参数--num_to_add. Whatever variables are within a parent’s scope when a function gets created remain available to it for its execution(不知道怎么翻).
+  重要的一点是, 无论createAdder什么时候返回, 它都仍然返回传给它的参数--num\_to\_add. Whatever variables are within a parent’s scope when a function gets created remain available to it for its execution(不知道怎么翻).
 
   词法作用域非常棒, 它能真正优雅地解决问题, 正式这点使Ajax和Node.js更加合理.
 
@@ -91,7 +91,7 @@ categories: emacs lisp 翻译
   console.log(add10(13));  // = 23
   #+end_example
 
-  关键的不同点是adder函数, 变量 num_to_add 似乎不涉及任何东西. 然而当语言是动态绑定的, 变量会在它被调用的地方引用. 因此add2函数设置的变量num_to_add, 当adder函数被调用时, 它才有可能被引用.
+  关键的不同点是adder函数, 变量 num_to_add 似乎不涉及任何东西. 然而当语言是动态绑定的, 变量会在它被调用的地方引用. 因此add2函数设置的变量num\_to\_add, 当adder函数被调用时, 它才有可能被引用.
 
   你可能会想这听起来就好像是全局变量, 没错, 的确如此. 这就是为什么当今绝大部分语言都是词法绑定的, 而不是动态绑定的.
 
