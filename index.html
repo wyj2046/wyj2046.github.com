@@ -9,7 +9,7 @@
   <meta name="author" content="豆豆蛙">
 
   
-  <meta name="description" content="原文链接 http://joelmccracken.github.io/entries/why-you-should-learn-elisp/ 前言 Emacs Lisp是一种神秘莫测的黑客编程语言. 它的弱点是众所周知的, 它很慢, 它是单线程的, 同时它的变量是动态绑定的, 等等等等. &hellip;">
+  <meta name="description" content="源起 不习惯在Linux下用专门的客户端翻译软件, 每次查个单词什么的都用web版的google-translate. 因为E文不好, 每次写东西时都要在网页和Emacs之间频繁切换, 效率极低, 十分不爽. 既然Emacs称之为一个操作系统, 想想有什么办法能将翻译功能给丫加上, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -65,6 +65,111 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/05/18/use-google-translate-in-emacs/">在Emacs中实现翻译功能</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-05-18T12:29:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/05/18/use-google-translate-in-emacs/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">源起</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>  不习惯在Linux下用专门的客户端翻译软件, 每次查个单词什么的都用web版的google-translate. 因为E文不好, 每次写东西时都要在网页和Emacs之间频繁切换, 效率极低, 十分不爽. 既然Emacs称之为一个操作系统, 想想有什么办法能将翻译功能给丫加上, 放狗一搜果然有办法, 已经有人写了一个翻译插件(google-translate.el), 貌似还是个俄国佬写的=.=, 果断拿来用! 感谢伟大的Emacs社区~~ 
+</p></div>
+
+</div>
+
+
+
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">步骤</h2>
+<div class="outline-text-2" id="text-2">
+
+<ol>
+<li>从elpa包管理器上找到google-translate, 装之
+</li>
+<li>给.emacs文件加上如下语句把google-translate配置起来
+
+
+
+<pre class="src src-emacs-lisp">(<span style="color: #66D9EF;">require</span> '<span style="color: #AE81FF;">google-translate</span>)
+(global-set-key <span style="color: #E6DB74;">"\C-ct"</span> 'google-translate-at-point)
+(global-set-key <span style="color: #E6DB74;">"\C-cT"</span> 'google-translate-query-translate)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c r"</span>) 'google-translate-at-point-reverse)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c R"</span>) 'google-translate-query-translate-reverse)
+</pre>
+
+</li>
+<li>设置默认源语言与目标语言
+
+
+
+<pre class="example">用自定义设置变量方式修改(M-x customize-variable)
+输入google-translate-default-target-language, 找到Chinese Simplified, 保存之(这个是目标语言)
+输入google-translate-default-source-language, 找到English, 保存之(这个是源语言)
+</pre>
+
+</li>
+<li>O了
+</li>
+</ol>
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">快捷键</h2>
+<div class="outline-text-2" id="text-3">
+
+
+
+
+<pre class="example">C-c t 将当前光标的英文单词翻译为中文
+C-c r 将当前光标的中文翻译为英文
+C-c T 自己输入英文进行翻译
+C-c R 自己输入中文进行翻译
+</pre>
+
+</div>
+</div>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -513,6 +618,10 @@ rake install
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/05/18/use-google-translate-in-emacs/">在Emacs中实现翻译功能</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/05/03/5-reasons-why-you-should-learn-emacs-lisp-today/">今天你应当学习Emacs Lisp的5点理由(译)</a>

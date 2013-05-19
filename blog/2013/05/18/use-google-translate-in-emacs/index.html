@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>30分钟搭建一个octopress博客 - 时之殇</title>
+  <title>在Emacs中实现翻译功能 - 时之殇</title>
   <meta name="author" content="豆豆蛙">
 
   
-  <meta name="description" content="缘起 早都有搭一个个人blog的想法了, 作为一名IT行业从业者:) 怎么能没有自己的独立博客呢. 当然, 将博客托管在csdn,cnblog上也不符合我们的折腾精神. 本着生命不惜,折腾不止的信念, 终于利用这个51假期, 在参考了众多资料后, 搭建了一个完全免费, &hellip;">
+  <meta name="description" content="源起 不习惯在Linux下用专门的客户端翻译软件, 每次查个单词什么的都用web版的google-translate. 因为E文不好, 每次写东西时都要在网页和Emacs之间频繁切换, 效率极低, 十分不爽. 既然Emacs称之为一个操作系统, 想想有什么办法能将翻译功能给丫加上, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://wyj2046.github.io/blog/2013/05/01/first-step-in-octopress">
+  <link rel="canonical" href="http://wyj2046.github.io/blog/2013/05/18/use-google-translate-in-emacs">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="时之殇" type="application/atom+xml">
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">30分钟搭建一个octopress博客</h1>
+      <h1 class="entry-title">在Emacs中实现翻译功能</h1>
     
     
       <p class="meta">
@@ -84,7 +84,7 @@
   
 
 
-<time datetime="2013-05-01T20:58:00+08:00" pubdate data-updated="true">May 1<span>st</span>, 2013</time>
+<time datetime="2013-05-18T12:29:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -94,10 +94,10 @@
 
 
 <div class="entry-content"><div id="outline-container-1" class="outline-2">
-<h2 id="sec-1">缘起</h2>
+<h2 id="sec-1">源起</h2>
 <div class="outline-text-2" id="text-1">
 
-<p>  早都有搭一个个人blog的想法了, 作为一名IT行业从业者:) 怎么能没有自己的独立博客呢. 当然, 将博客托管在csdn,cnblog上也不符合我们的折腾精神. 本着生命不惜,折腾不止的信念, 终于利用这个51假期, 在参考了众多资料后, 搭建了一个完全免费, 不限流量的基于octopress的个人博客(本着能省则省的原则, 连域名都用免费的). 同时作为一名Emacs党, orgmode也是标配, 用orgmode直接发布文章也就是刚需了, 这篇文章就是用orgmode写的
+<p>  不习惯在Linux下用专门的客户端翻译软件, 每次查个单词什么的都用web版的google-translate. 因为E文不好, 每次写东西时都要在网页和Emacs之间频繁切换, 效率极低, 十分不爽. 既然Emacs称之为一个操作系统, 想想有什么办法能将翻译功能给丫加上, 放狗一搜果然有办法, 已经有人写了一个翻译插件(google-translate.el), 貌似还是个俄国佬写的=.=, 果断拿来用! 感谢伟大的Emacs社区~~ 
 </p></div>
 
 </div>
@@ -106,11 +106,39 @@
 
 
 <div id="outline-container-2" class="outline-2">
-<h2 id="sec-2">我的搭建环境</h2>
+<h2 id="sec-2">步骤</h2>
 <div class="outline-text-2" id="text-2">
 
-<p>  ubuntu12.04 + emacs24.2
-</p></div>
+<ol>
+<li>从elpa包管理器上找到google-translate, 装之
+</li>
+<li>给.emacs文件加上如下语句把google-translate配置起来
+
+
+
+<pre class="src src-emacs-lisp">(<span style="color: #66D9EF;">require</span> '<span style="color: #AE81FF;">google-translate</span>)
+(global-set-key <span style="color: #E6DB74;">"\C-ct"</span> 'google-translate-at-point)
+(global-set-key <span style="color: #E6DB74;">"\C-cT"</span> 'google-translate-query-translate)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c r"</span>) 'google-translate-at-point-reverse)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c R"</span>) 'google-translate-query-translate-reverse)
+</pre>
+
+</li>
+<li>设置默认源语言与目标语言
+
+
+
+<pre class="example">用自定义设置变量方式修改(M-x customize-variable)
+输入google-translate-default-target-language, 找到Chinese Simplified, 保存之(这个是目标语言)
+输入google-translate-default-source-language, 找到English, 保存之(这个是源语言)
+</pre>
+
+</li>
+<li>O了
+</li>
+</ol>
+
+</div>
 
 </div>
 
@@ -118,128 +146,17 @@
 
 
 <div id="outline-container-3" class="outline-2">
-<h2 id="sec-3">安装ruby</h2>
+<h2 id="sec-3">快捷键</h2>
 <div class="outline-text-2" id="text-3">
 
-<p>  很简单, 一句命令搞定
-</p>
 
 
-<pre class="example">sudo apt-get install ruby1.9.3
+
+<pre class="example">C-c t 将当前光标的英文单词翻译为中文
+C-c r 将当前光标的中文翻译为英文
+C-c T 自己输入英文进行翻译
+C-c R 自己输入中文进行翻译
 </pre>
-
-</div>
-
-</div>
-
-
-
-
-<div id="outline-container-4" class="outline-2">
-<h2 id="sec-4">安装octopress</h2>
-<div class="outline-text-2" id="text-4">
-
-
-
-
-<pre class="example">git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-sudo gem install bundler
-rake install
-</pre>
-
-</div>
-
-</div>
-
-
-
-
-<div id="outline-container-5" class="outline-2">
-<h2 id="sec-5">Github账户配置</h2>
-<div class="outline-text-2" id="text-5">
-
-</div>
-
-</div>
-
-
-
-
-<div id="outline-container-6" class="outline-2">
-<h2 id="sec-6">把octopress部署到Github上</h2>
-<div class="outline-text-2" id="text-6">
-
-</div>
-
-</div>
-
-
-
-
-<div id="outline-container-7" class="outline-2">
-<h2 id="sec-7">基本的blog配置</h2>
-<div class="outline-text-2" id="text-7">
-
-
-</div>
-
-<div id="outline-container-7-1" class="outline-3">
-<h3 id="sec-7-1">开启disqus</h3>
-<div class="outline-text-3" id="text-7-1">
-
-</div>
-
-</div>
-
-<div id="outline-container-7-2" class="outline-3">
-<h3 id="sec-7-2">在侧边栏加新浪微博</h3>
-<div class="outline-text-3" id="text-7-2">
-
-</div>
-</div>
-
-</div>
-
-
-
-
-<div id="outline-container-8" class="outline-2">
-<h2 id="sec-8">将修改好的octopress配置提交到Github上去</h2>
-<div class="outline-text-2" id="text-8">
-
-</div>
-
-</div>
-
-
-
-
-<div id="outline-container-9" class="outline-2">
-<h2 id="sec-9">写文章</h2>
-<div class="outline-text-2" id="text-9">
-
-</div>
-
-</div>
-
-
-
-
-<div id="outline-container-10" class="outline-2">
-<h2 id="sec-10">增加org-mode导出功能</h2>
-<div class="outline-text-2" id="text-10">
-
-</div>
-
-</div>
-
-
-
-
-<div id="outline-container-11" class="outline-2">
-<h2 id="sec-11">参考资料</h2>
-<div class="outline-text-2" id="text-11">
 
 </div>
 </div>
@@ -266,21 +183,15 @@ rake install
   
 
 
-<time datetime="2013-05-01T20:58:00+08:00" pubdate data-updated="true">May 1<span>st</span>, 2013</time>
+<time datetime="2013-05-18T12:29:00+08:00" pubdate data-updated="true">May 18<span>th</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/octopress/'>octopress</a>, <a class='category' href='/blog/categories/org-mode/'>org-mode</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://wyj2046.github.io/blog/2013/05/01/first-step-in-octopress/" data-via="" data-counturl="http://wyj2046.github.io/blog/2013/05/01/first-step-in-octopress/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://wyj2046.github.io/blog/2013/05/18/use-google-translate-in-emacs/" data-via="" data-counturl="http://wyj2046.github.io/blog/2013/05/18/use-google-translate-in-emacs/" >Tweet</a>
   
   
   
@@ -289,8 +200,8 @@ rake install
     
     <p class="meta">
       
+        <a class="basic-alignment left" href="/blog/2013/05/03/5-reasons-why-you-should-learn-emacs-lisp-today/" title="Previous Post: 今天你应当学习Emacs Lisp的5点理由(译)">&laquo; 今天你应当学习Emacs Lisp的5点理由(译)</a>
       
-        <a class="basic-alignment right" href="/blog/2013/05/03/5-reasons-why-you-should-learn-emacs-lisp-today/" title="Next Post: 今天你应当学习Emacs Lisp的5点理由(译)">今天你应当学习Emacs Lisp的5点理由(译) &raquo;</a>
       
     </p>
   </footer>
@@ -357,8 +268,8 @@ rake install
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://wyj2046.github.io/blog/2013/05/01/first-step-in-octopress/';
-        var disqus_url = 'http://wyj2046.github.io/blog/2013/05/01/first-step-in-octopress/';
+        var disqus_identifier = 'http://wyj2046.github.io/blog/2013/05/18/use-google-translate-in-emacs/';
+        var disqus_url = 'http://wyj2046.github.io/blog/2013/05/18/use-google-translate-in-emacs/';
         var disqus_script = 'embed.js';
       
     (function () {

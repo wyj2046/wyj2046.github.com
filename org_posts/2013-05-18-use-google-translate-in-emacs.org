@@ -1,0 +1,35 @@
+#+BEGIN_HTML
+---
+layout: post
+title: "在Emacs中实现翻译功能"
+date: 2013-05-18 12:29
+comments: true
+categories: 
+---
+#+END_HTML
+* 源起
+  不习惯在Linux下用专门的客户端翻译软件, 每次查个单词什么的都用web版的google-translate. 因为E文不好, 每次写东西时都要在网页和Emacs之间频繁切换, 效率极低, 十分不爽. 既然Emacs称之为一个操作系统, 想想有什么办法能将翻译功能给丫加上, 放狗一搜果然有办法, 已经有人写了一个翻译插件(google-translate.el), 貌似还是个俄国佬写的=.=, 果断拿来用! 感谢伟大的Emacs社区~~ 
+* 步骤
+  1. 从elpa包管理器上找到google-translate, 装之
+  2. 给.emacs文件加上如下语句把google-translate配置起来
+     #+begin_src emacs-lisp
+     (require 'google-translate)
+     (global-set-key "\C-ct" 'google-translate-at-point)
+     (global-set-key "\C-cT" 'google-translate-query-translate)
+     (global-set-key (kbd "C-c r") 'google-translate-at-point-reverse)
+     (global-set-key (kbd "C-c R") 'google-translate-query-translate-reverse)
+     #+end_src
+  3. 设置默认源语言与目标语言
+     #+begin_example
+     用自定义设置变量方式修改(M-x customize-variable)
+     输入google-translate-default-target-language, 找到Chinese Simplified, 保存之(这个是目标语言)
+     输入google-translate-default-source-language, 找到English, 保存之(这个是源语言)
+     #+end_example
+  4. O了
+* 快捷键
+  #+begin_example
+  C-c t 将当前光标的英文单词翻译为中文
+  C-c r 将当前光标的中文翻译为英文
+  C-c T 自己输入英文进行翻译
+  C-c R 自己输入中文进行翻译
+  #+end_example

@@ -4,7 +4,7 @@
   <title><![CDATA[时之殇]]></title>
   <link href="http://wyj2046.github.io/atom.xml" rel="self"/>
   <link href="http://wyj2046.github.io/"/>
-  <updated>2013-05-03T21:16:18+08:00</updated>
+  <updated>2013-05-18T12:56:33+08:00</updated>
   <id>http://wyj2046.github.io/</id>
   <author>
     <name><![CDATA[豆豆蛙]]></name>
@@ -12,6 +12,82 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[在Emacs中实现翻译功能]]></title>
+    <link href="http://wyj2046.github.io/blog/2013/05/18/use-google-translate-in-emacs/"/>
+    <updated>2013-05-18T12:29:00+08:00</updated>
+    <id>http://wyj2046.github.io/blog/2013/05/18/use-google-translate-in-emacs</id>
+    <content type="html"><![CDATA[<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">源起</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>  不习惯在Linux下用专门的客户端翻译软件, 每次查个单词什么的都用web版的google-translate. 因为E文不好, 每次写东西时都要在网页和Emacs之间频繁切换, 效率极低, 十分不爽. 既然Emacs称之为一个操作系统, 想想有什么办法能将翻译功能给丫加上, 放狗一搜果然有办法, 已经有人写了一个翻译插件(google-translate.el), 貌似还是个俄国佬写的=.=, 果断拿来用! 感谢伟大的Emacs社区~~ 
+</p></div>
+
+</div>
+
+
+
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2">步骤</h2>
+<div class="outline-text-2" id="text-2">
+
+<ol>
+<li>从elpa包管理器上找到google-translate, 装之
+</li>
+<li>给.emacs文件加上如下语句把google-translate配置起来
+
+
+
+<pre class="src src-emacs-lisp">(<span style="color: #66D9EF;">require</span> '<span style="color: #AE81FF;">google-translate</span>)
+(global-set-key <span style="color: #E6DB74;">"\C-ct"</span> 'google-translate-at-point)
+(global-set-key <span style="color: #E6DB74;">"\C-cT"</span> 'google-translate-query-translate)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c r"</span>) 'google-translate-at-point-reverse)
+(global-set-key (kbd <span style="color: #E6DB74;">"C-c R"</span>) 'google-translate-query-translate-reverse)
+</pre>
+
+</li>
+<li>设置默认源语言与目标语言
+
+
+
+<pre class="example">用自定义设置变量方式修改(M-x customize-variable)
+输入google-translate-default-target-language, 找到Chinese Simplified, 保存之(这个是目标语言)
+输入google-translate-default-source-language, 找到English, 保存之(这个是源语言)
+</pre>
+
+</li>
+<li>O了
+</li>
+</ol>
+
+</div>
+
+</div>
+
+
+
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3">快捷键</h2>
+<div class="outline-text-2" id="text-3">
+
+
+
+
+<pre class="example">C-c t 将当前光标的英文单词翻译为中文
+C-c r 将当前光标的中文翻译为英文
+C-c T 自己输入英文进行翻译
+C-c R 自己输入中文进行翻译
+</pre>
+
+</div>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[今天你应当学习Emacs Lisp的5点理由(译)]]></title>
