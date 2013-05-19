@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>---</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="---"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-05-19 16:40:21 CST"/>
+<meta name="author" content="wyj2046"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">---</h1>
+
+
+---
+layout: post
+title: "30分钟搭建一个octopress博客"
+date: 2013-05-01 20:58
+comments: true
+categories: octopress org-mode
+---
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 缘起</a></li>
+<li><a href="#sec-2">2 我的搭建环境</a></li>
+<li><a href="#sec-3">3 安装ruby</a></li>
+<li><a href="#sec-4">4 安装octopress</a></li>
+<li><a href="#sec-5">5 Github账户配置</a></li>
+<li><a href="#sec-6">6 把octopress部署到Github上</a></li>
+<li><a href="#sec-7">7 基本的blog配置</a>
+<ul>
+<li><a href="#sec-7-1">7.1 开启disqus</a></li>
+<li><a href="#sec-7-2">7.2 在侧边栏加新浪微博</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">8 将修改好的octopress配置提交到Github上去</a></li>
+<li><a href="#sec-9">9 写文章</a></li>
+<li><a href="#sec-10">10 增加org-mode导出功能</a></li>
+<li><a href="#sec-11">11 参考资料</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 缘起</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>  早都有搭一个个人blog的想法了, 作为一名IT行业从业者:) 怎么能没有自己的独立博客呢. 当然, 将博客托管在csdn,cnblog上也不符合我们的折腾精神. 本着生命不惜,折腾不止的信念, 终于利用这个51假期, 在参考了众多资料后, 搭建了一个完全免费, 不限流量的基于octopress的个人博客(本着能省则省的原则, 连域名都用免费的). 同时作为一名Emacs党, orgmode也是标配, 用orgmode直接发布文章也就是刚需了, 这篇文章就是用orgmode写的
+</p></div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 我的搭建环境</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>  ubuntu12.04 + emacs24.2
+</p></div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 安装ruby</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>  很简单, 一句命令搞定
+</p>
+
+
+<pre class="example">sudo apt-get install ruby1.9.3
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 安装octopress</h2>
+<div class="outline-text-2" id="text-4">
+
+
+
+
+<pre class="example">git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+sudo gem install bundler
+rake install
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Github账户配置</h2>
+<div class="outline-text-2" id="text-5">
+
+<ol>
+<li>首先在Github上注册一个账户, 然后建一个名为username.github.com的resporitory(username就是Github的账户名)
+</li>
+<li>如果本机没有ssh keys的话, 还需要为Github帐号设置一个本机的ssh keys, 参考
+     <a href="https://help.github.com/articles/generating-ssh-keys">https://help.github.com/articles/generating-ssh-keys</a>
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 把octopress部署到Github上</h2>
+<div class="outline-text-2" id="text-6">
+
+<p>  回到octopress根目录下
+</p>
+
+
+<pre class="example">rake setup_github_pages
+</pre>
+
+<p>
+  此处注意, 当出现提示填写url地址时, 千万不能按照那个坑爹的提示来, 应按照如下形式填写
+  (关于这个问题, 可以参考陆彦帑这哥们的回答<a href="http://stackoverflow.com/questions/12060903/github-error-repository-not-found-when-installing-octopress">http://stackoverflow.com/questions/12060903/github-error-repository-not-found-when-installing-octopress</a> )
+</p>
+
+
+<pre class="example">git@github.com:wyj2046/wyj2046.github.com.git
+</pre>
+
+<p>
+  接着执行下面的命令, 当出现"Github Pages deploy complete"就表示部署成功, 可以在浏览器上输入username.github.com看看效果了
+</p>
+
+
+<pre class="example">rake generate
+rake deploy
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> 基本的blog配置</h2>
+<div class="outline-text-2" id="text-7">
+
+
+</div>
+
+<div id="outline-container-7-1" class="outline-3">
+<h3 id="sec-7-1"><span class="section-number-3">7.1</span> 开启disqus</h3>
+<div class="outline-text-3" id="text-7-1">
+
+<ol>
+<li>在disqus上申请个号, 绑定到博客的url, 同时定义一个shortname
+</li>
+<li>在<sub>config</sub>.yml中, 找到与disqus相关的, 该改的改, 该填的填(如下)
+
+
+
+<pre class="example"># Disqus Comments
+disqus_short_name: wyj2046
+disqus_show_comment_count: true
+</pre>
+
+</li>
+</ol>
+
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-3">
+<h3 id="sec-7-2"><span class="section-number-3">7.2</span> 在侧边栏加新浪微博</h3>
+<div class="outline-text-3" id="text-7-2">
+
+<ol>
+<li>在<sub>config</sub>.yml文件中将default<sub>asides处代码改为如下，即去除不要的侧边栏，并加入微博侧边栏</sub>
+
+
+
+<pre class="example">default_asides: [asides/recent_posts.html, asides/github.html, custom/asides/weibo.html]
+</pre>
+
+</li>
+<li>到 <a href="http://app.weibo.com/tool/weiboshow">http://app.weibo.com/tool/weiboshow</a> 获取自己微博秀的代码
+</li>
+<li>在source/<sub>includes</sub>/custom/asides文件夹下新建weibo.html文件并编辑如下,将获取的微博秀代码插入到相应位置:
+
+
+
+<pre class="src src-css">&lt;section&gt;
+  &lt;h1&gt;&#26032;&#28010;&#24494;&#21338;&lt;/h1&gt;
+  &lt;ul id=<span style="color: #E6DB74;">"weibo"</span>&gt;
+  &lt;li&gt;
+
+  &lt;!-- &#22312;&#27492;&#25554;&#20837;&#33719;&#24471;&#30340;&#24494;&#21338;&#31168;&#20195;&#30721; --&gt;
+
+  &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/section&gt;
+</pre>
+
+</li>
+</ol>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> 将修改好的octopress配置提交到Github上去</h2>
+<div class="outline-text-2" id="text-8">
+
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> 写文章</h2>
+<div class="outline-text-2" id="text-9">
+
+</div>
+
+</div>
+
+<div id="outline-container-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> 增加org-mode导出功能</h2>
+<div class="outline-text-2" id="text-10">
+
+</div>
+
+</div>
+
+<div id="outline-container-11" class="outline-2">
+<h2 id="sec-11"><span class="section-number-2">11</span> 参考资料</h2>
+<div class="outline-text-2" id="text-11">
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2013-05-19 16:40:21 CST</p>
+<p class="author">Author: wyj2046</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

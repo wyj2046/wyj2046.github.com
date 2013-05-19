@@ -7,6 +7,7 @@ comments: true
 categories: octopress org-mode
 ---
 #+END_HTML
+#+OPTIONS: ^:{}
 * 缘起
   早都有搭一个个人blog的想法了, 作为一名IT行业从业者:) 怎么能没有自己的独立博客呢. 当然, 将博客托管在csdn,cnblog上也不符合我们的折腾精神. 本着生命不惜,折腾不止的信念, 终于利用这个51假期, 在参考了众多资料后, 搭建了一个完全免费, 不限流量的基于octopress的个人博客(本着能省则省的原则, 连域名都用免费的). 同时作为一名Emacs党, orgmode也是标配, 用orgmode直接发布文章也就是刚需了, 这篇文章就是用orgmode写的
 * 我的搭建环境
@@ -24,11 +25,130 @@ categories: octopress org-mode
   rake install
   #+end_example
 * Github账户配置
+  1. 首先在Github上注册一个账户, 然后建一个名为username.github.com的resporitory(username就是Github的账户名)
+  2. 如果本机没有ssh keys的话, 还需要为Github帐号设置一个本机的ssh keys, 参考
+     https://help.github.com/articles/generating-ssh-keys
 * 把octopress部署到Github上
+  回到octopress根目录下
+  #+begin_example
+  rake setup_github_pages
+  #+end_example
+  此处注意, 当出现提示填写url地址时, 千万不能按照那个坑爹的提示来, 应按照如下形式填写
+  (关于这个问题, 可以参考陆彦帑这哥们的回答http://stackoverflow.com/questions/12060903/github-error-repository-not-found-when-installing-octopress )
+  #+begin_example
+  git@github.com:wyj2046/wyj2046.github.com.git
+  #+end_example
+  接着执行下面的命令, 当出现"Github Pages deploy complete"就表示部署成功, 可以在浏览器上输入username.github.com看看效果了
+  #+begin_example
+  rake generate
+  rake deploy
+  #+end_example
 * 基本的blog配置
+** 编辑_config.yml文件
+   这个文件是基本的配置文件, 博客标题, 作者姓名等基本信息就从这里改
 ** 开启disqus
+   1. 在disqus上申请个号, 绑定到博客的url, 同时定义一个shortname
+   2. 在_config.yml中, 找到与disqus相关的, 该改的改, 该填的填(如下)
+      #+begin_example
+      # Disqus Comments
+      disqus_short_name: wyj2046
+      disqus_show_comment_count: true
+      #+end_example
 ** 在侧边栏加新浪微博
+   1. 在_config.yml文件中将default_asides处代码改为如下，即去除不要的侧边栏，并加入微博侧边栏
+      #+begin_example
+      default_asides: [asides/recent_posts.html, asides/github.html, custom/asides/weibo.html]
+      #+end_example
+   2. 到 http://app.weibo.com/tool/weiboshow 获取自己微博秀的代码
+   3. 在source/_includes/custom/asides文件夹下新建weibo.html文件并编辑如下,将获取的微博秀代码插入到相应位置:
+      (参考http://easypi.github.io/blog/2013/01/05/using-octopress-to-setup-blog-on-github/)
+      #+begin_src css
+      <section>
+        <h1>新浪微博</h1>
+        <ul id="weibo">
+        <li>
+
+        <!-- 在此插入获得的微博秀代码 -->
+
+        </li>
+        </ul>
+      </section>
+      #+end_src
 * 将修改好的octopress配置提交到Github上去
+  在octopress根目录下
+  #+begin_example
+  git add .
+  git commit -m "commit reason"
+  git push origin source
+  #+end_example
+  此处注意, 是source不是master
 * 写文章
+  #+begin_example
+  1. rake new_post['title']
+  2. rake generate 生成静态网页
+  3. rake preview 在localhost:4000上预览
+  4. rake deploy 发布到Github上  
+  #+end_example
 * 增加org-mode导出功能
+** 在.emacs里加上如下语句
+   #+begin_src emacs-lisp
+     (setq org-publish-project-alist
+       '(("blog" .  (:base-directory "~/octopress/source/org_posts/"
+                   :base-extension "org"
+                   :publishing-directory "~/octopress/source/_posts/"
+                   :sub-superscript ""
+                   :recursive t
+                   :publishing-function org-publish-org-to-html
+                   :headline-levels 4
+                   :html-extension "markdown"
+                   :body-only t))))
+   #+end_src
+** 修改octopress目录下的Rakefile文件
+   找到## -- Misc Configs -- ##,在下面加这两句
+   #+begin_example
+     org_posts_dir = "org_posts"
+     new_org_post_ext = "org"  # default new org post file extension when using the new_org_post task
+   #+end_example
+   找到# usage rake new_post[my-new-post] or rake new_post['my new post'] or rake new_post (defaults to "new-post")这段,在下面另起一段加上
+   #+begin_example
+   # usage rake new_org_post[my-new-org-post] or rake new_org_post['my new org post'] or rake new_org_post (defaults to "new-post")
+desc "Begin a new org_post in #{source_dir}/#{org_posts_dir}"
+task :new_org_post, :title do |t, args|
+  if args.title
+    title = args.title
+  else
+    title = get_stdin("Enter a title for your post: ")
+  end
+  raise "### You haven't set anything up yet. First run `rake install` to set up an Octopress theme." unless File.directory?(source_dir)
+  mkdir_p "#{source_dir}/#{org_posts_dir}"
+  filename = "#{source_dir}/#{org_posts_dir}/#{Time.now.strftime('%Y-%m-%d')}-#{title.to_url}.#{new_org_post_ext}"
+  if File.exist?(filename)
+    abort("rake aborted!") if ask("#{filename} already exists. Do you want to overwrite?", ['y', 'n']) == 'n'
+  end
+  puts "Creating new post: #{filename}"
+  open(filename, 'w') do |post|
+    post.puts "#+BEGIN_HTML"
+    post.puts "---"
+    post.puts "layout: post"
+    post.puts "title: \"#{title.gsub(/&/,'&amp;')}\""
+    post.puts "date: #{Time.now.strftime('%Y-%m-%d %H:%M')}"
+    post.puts "comments: true"
+    post.puts "categories: "
+    post.puts "---"
+    post.puts "#+END_HTML"
+  end
+end
+   #+end_example
+  以后即可以使用命令在org_posts目录下生成以org为后缀名的文章
+  #+begin_example
+  rake new_org_post['title']
+  #+end_example
+  
+
+  编辑org文件后用快捷键"C-c C-e F"即可发布到_posts目录下
 * 参考资料
+  http://easypi.github.io/blog/2013/01/05/using-octopress-to-setup-blog-on-github/
+
+  http://jaderholm.com/blog/blogging-with-org-mode-and-octopress
+
+  http://www.v2ex.com/t/49949
